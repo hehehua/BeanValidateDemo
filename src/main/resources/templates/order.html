@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>创建订单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" th:src="@{/jquery-1.11.1.min.js}"></script>
+</head>
+<body>
+
+<h1>创建订单</h1>
+<form method="post" th:object="${order}">
+
+    <p>订单编号：<input type="text" name="orderId" th:value="*{orderId}" />
+    </p>
+    <p th:if="${#fields.hasErrors('orderId')}" th:errors="*{orderId}" style="color: red;">orderId Error</p>
+    <p>客户：<input type="text" name="customer" th:value="*{customer}" />
+    </p>
+    <p th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}" style="color: red;">customer Error</p>
+    <p>电子邮箱：<input type="text" name="email" th:value="*{email}" />
+    </p>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;">email Error</p>
+    <p>地址：<input type="text" name="address" th:value="*{address}" />
+    </p>
+    <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red;">address Error</p>
+    <p>状态：<input type="text" name="status" th:value="*{status}" />
+    </p>
+    <p th:if="${#fields.hasErrors('status')}" th:errors="*{status}" style="color: red;">status Error</p>
+    <p>产品名称：<input type="text" name="pName" th:value="*{pName}" />
+    </p>
+    <p th:if="${#fields.hasErrors('pName')}" th:errors="*{pName}" style="color: red;">pName Error</p>
+    <p>产品价格：<input type="text" name="price" th:value="*{price}" />
+    </p>
+    <p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="color: red;">price Error</p>
+    <div style="padding-left: 100px;">
+        <p><button type="submit">提交</button></p>
+    </div>
+</form>
+
+
+<!--<h1>创建订单</h1>
+<div th:object="${order}">
+<p>订单编号：<input type="text" th:id="orderId" th:value="*{orderId}" />
+</p>
+<p th:if="${#fields.hasErrors('orderId')}" th:errors="*{orderId}" style="color: red;">orderId Error</p>
+<p>客户：<input type="text" th:id="customer" th:value="*{customer}" />
+</p>
+<p th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}" style="color: red;">customer Error</p>
+<p>电子邮箱：<input type="text" th:id="email" th:value="*{email}" />
+</p>
+<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red;">email Error</p>
+<p>地址：<input type="text" th:id="address" th:value="*{address}" />
+</p>
+<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red;">address Error</p>
+<p>状态：<input type="text" th:id="status" th:value="*{status}" />
+</p>
+<p th:if="${#fields.hasErrors('status')}" th:errors="*{status}" style="color: red;">status Error</p>
+<p>产品名称：<input type="text" th:id="pName" th:value="*{pName}" />
+</p>
+<p th:if="${#fields.hasErrors('pName')}" th:errors="*{pName}" style="color: red;">pName Error</p>
+<p>产品价格：<input type="text" th:id="price" th:value="*{price}" />
+</p>
+<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="color: red;">price Error</p>
+</div>
+<button type="button" onclick="submitOrder();">提交</button>
+<script>
+    function submitOrder() {
+        var orderId = $("#orderId").val();
+        var custom = $("#custom").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+        var status = $("#status").val();
+        var pName = $("#pName").val();
+        var price = $("#price").val();
+        $.ajax({
+            url: '/order',
+            type: 'get',
+            async: false,
+            data: {
+                orderId: orderId,
+                custom:custom,
+                email:email,
+                address:address,
+                status:status,
+                pName:pName,
+                price:price
+            },
+            /*success: function(data) {
+
+            },*/
+            error: function(xhr, status, error) {
+
+            }
+        });
+    }
+</script>-->
+</body>
+</html>
